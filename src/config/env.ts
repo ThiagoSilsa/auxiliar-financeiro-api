@@ -1,10 +1,10 @@
-import dotenv from "dotenv";
+import dotenv from 'dotenv';
 
 // Carrega as variáveis de ambiente do arquivo .env
 dotenv.config();
 
 const env = {
-    // Posta do servidor
+    // Porta do servidor
     PORT: process.env.PORT! || 3000,
 
     // Configurações do banco de dados
