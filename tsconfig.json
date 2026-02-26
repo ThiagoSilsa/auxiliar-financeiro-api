@@ -32,6 +32,10 @@
     // "noFallthroughCasesInSwitch": true,
     // "noPropertyAccessFromIndexSignature": true,
 
+    // Decorator Support (required for sequelize-typescript)
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+
     // Recommended Options
     "strict": true,
     "jsx": "react-jsx",

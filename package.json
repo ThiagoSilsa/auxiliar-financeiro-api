@@ -2,7 +2,7 @@
   "name": "auxiliar-financeiro-api",
   "version": "1.0.0",
   "description": "API do aplicativo de assistente financeiro",
-  "main": "server.js",
+  "main": "dist/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsc --watch & nodemon ./dist/server.js",
@@ -17,7 +17,9 @@
     "express": "^5.2.1",
     "mysql2": "^3.16.1",
     "nodemon": "^3.1.11",
+    "reflect-metadata": "^0.2.2",
     "sequelize": "^6.37.7",
+    "sequelize-typescript": "^2.1.6",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
