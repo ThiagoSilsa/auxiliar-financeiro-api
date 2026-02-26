@@ -7,9 +7,6 @@ const PORT = env.PORT;
 sequelize
   .then(async (db) => {
     try {
-      // Sincroniza os modelos Sequelize com o banco de dados
-      await db.sync({ force: false });
-
       // Inicia o servidor
       app.listen(PORT, () => {
         console.log(`🌐 Servidor rodando em http://localhost:${PORT}`);
