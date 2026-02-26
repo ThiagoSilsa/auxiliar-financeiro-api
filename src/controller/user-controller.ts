@@ -16,14 +16,9 @@ export class UserController {
 
   public async getUserById(req: Request, res: Response): Promise<void> {
     const { id } = req.params;
-    const parsedId = Number(id);
-    if (isNaN(parsedId)) {
-      res.status(400).json({ error: "ID inválido fornecido" });
-      return;
-    }
-
+    const stringId = String(id);
     try {
-      const user = await UserService.getUserById(parsedId);
+      const user = await UserService.getUserById(stringId);
       if (user) {
         res.status(200).json(user);
       } else {

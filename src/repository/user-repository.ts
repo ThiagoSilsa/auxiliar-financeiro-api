@@ -8,8 +8,8 @@ export class UserRepository {
     return data;
   }
 
-  public async getUserById(id: number): Promise<any | null> {
-    const user = data.find((user) => user.id === id);
+  public async getUserById(id: string): Promise<any | null> {
+    const user = data.find((user) => user.id === parseInt(id));
     return user || null;
   }
 }

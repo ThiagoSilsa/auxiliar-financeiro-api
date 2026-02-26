@@ -10,7 +10,7 @@ export class UserService {
     }
   }
 
-  public async getUserById(id: number): Promise<any | null> {
+  public async getUserById(id: string): Promise<any> {
     try {
       const user = await UserRepository.getUserById(id);
       return user;
