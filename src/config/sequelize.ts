@@ -1,15 +1,15 @@
 import { Sequelize } from "sequelize-typescript";
 import env from "./env";
 
-async function setupDatabse() {
+async function setupDatabase() {
   // 1. Cria banco de dados se não existir
   const sequelize = new Sequelize({
     dialect: "mysql",
-    username: env.DB_USER || "root",
-    password: env.DB_PASSWORD || "password",
-    database: env.DB_NAME || "auxiliar_financeiro",
-    host: env.DB_HOST || "localhost",
-    port: Number(env.DB_PORT) || 3306,
+    username: env.DB_USER,
+    password: env.DB_PASSWORD,
+    database: env.DB_NAME,
+    host: env.DB_HOST,
+    port: Number(env.DB_PORT),
   });
   try {
     await sequelize.query(
@@ -37,6 +37,6 @@ async function setupDatabse() {
   return sequelizeConnected;
 }
 
-const sequelize = (async () => await setupDatabse())();
+const sequelize = (async () => await setupDatabase())();
 
 export default sequelize;
