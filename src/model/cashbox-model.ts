@@ -20,7 +20,6 @@ export default class Cashbox extends Model {
   })
   id!: string;
 
-  @AllowNull(false)
   @Column({
     type: DataType.UUID,
     allowNull: false,
