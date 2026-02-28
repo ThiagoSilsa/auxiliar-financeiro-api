@@ -1,7 +1,8 @@
+import User from "../model/user-model";
 import UserRepository from "../repository/user-repository";
 
-export class UserService {
-  public async getUsers(): Promise<any[]> {
+class UserService {
+  static async getUsers(): Promise<User[]> {
     try {
       const users = await UserRepository.getUsers();
       return users;
@@ -10,7 +11,7 @@ export class UserService {
     }
   }
 
-  public async getUserById(id: string): Promise<any> {
+  static async getUserById(id: string): Promise<User | null> {
     try {
       const user = await UserRepository.getUserById(id);
       return user;
@@ -20,4 +21,4 @@ export class UserService {
   }
 }
 
-export default new UserService();
+export default UserService;

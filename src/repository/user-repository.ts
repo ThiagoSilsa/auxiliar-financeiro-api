@@ -1,17 +1,13 @@
-const data = [
-  { id: 1, name: "User A", email: "userA@example.com" },
-  { id: 2, name: "User B", email: "userB@example.com" },
-];
+import User from "../model/user-model";
 
-export class UserRepository {
-  public async getUsers(): Promise<any[]> {
-    return data;
+class UserRepository {
+  static async getUsers(): Promise<User[]> {
+    return await User.findAll();
   }
 
-  public async getUserById(id: string): Promise<any | null> {
-    const user = data.find((user) => user.id === parseInt(id));
-    return user || null;
+  static async getUserById(id: string): Promise<any | null> {
+    return await User.findOne({ where: { id } });
   }
 }
 
-export default new UserRepository();
+export default UserRepository;

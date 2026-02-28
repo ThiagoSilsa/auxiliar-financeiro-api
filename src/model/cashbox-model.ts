@@ -1,8 +1,8 @@
 import {
-  AllowNull,
   BelongsTo,
   Column,
   DataType,
+  ForeignKey,
   Model,
   Table,
 } from "sequelize-typescript";
@@ -20,6 +20,7 @@ export default class Cashbox extends Model {
   })
   id!: string;
 
+  @ForeignKey(() => Accounts)
   @Column({
     type: DataType.UUID,
     allowNull: false,

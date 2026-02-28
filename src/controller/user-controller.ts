@@ -4,8 +4,8 @@ import { Request, Response } from "express";
 // Service
 import UserService from "../service/user-service";
 
-export class UserController {
-  public async getUsers(req: Request, res: Response): Promise<void> {
+class UserController {
+  static async getUsers(req: Request, res: Response) {
     try {
       const users = await UserService.getUsers();
       res.status(200).json(users);
@@ -14,7 +14,7 @@ export class UserController {
     }
   }
 
-  public async getUserById(req: Request, res: Response): Promise<void> {
+  static async getUserById(req: Request, res: Response) {
     const { id } = req.params;
     const stringId = String(id);
     try {
