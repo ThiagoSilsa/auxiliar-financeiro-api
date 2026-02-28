@@ -5,20 +5,20 @@ import { Request, Response } from "express";
 import UserService from "../service/user-service";
 
 class UserController {
-  static async getUsers(req: Request, res: Response) {
+  async getUsers(req: Request, res: Response) {
     try {
-      const users = await UserService.getUsers();
+      const users = UserService.getUsers();
       res.status(200).json(users);
     } catch (error) {
       res.status(500).json({ error: "Falha ao buscar usuários" });
     }
   }
 
-  static async getUserById(req: Request, res: Response) {
+  async getUserById(req: Request, res: Response) {
     const { id } = req.params;
     const stringId = String(id);
     try {
-      const user = await UserService.getUserById(stringId);
+      const user = UserService.getUserById(stringId);
       if (user) {
         res.status(200).json(user);
       } else {
