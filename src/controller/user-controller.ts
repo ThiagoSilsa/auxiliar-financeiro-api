@@ -30,5 +30,15 @@ class UserController {
       res.status(500).json({ error: "Falha ao buscar usuário pelo ID" });
     }
   }
+
+  async createUser(req: Request, res: Response) {
+    const { name, email, password } = req.body;
+    try {
+      const newUser = await UserService.createUser({ name, email, password });
+      res.status(201).json(newUser);
+    } catch (error) {
+      res.status(500).json({ error: "Falha ao criar usuário" });
+    }
+  }
 }
 export default new UserController();

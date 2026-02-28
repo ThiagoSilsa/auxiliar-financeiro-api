@@ -1,4 +1,4 @@
-import User from "../model/user-model";
+import User, { CreateUserAttributes } from "../model/user-model";
 import UserRepository from "../repository/user-repository";
 
 class UserService {
@@ -17,6 +17,15 @@ class UserService {
       return user;
     } catch (error) {
       throw new Error("Falha ao buscar usuário pelo ID");
+    }
+  }
+
+  static async createUser(userData: CreateUserAttributes): Promise<User | null> {
+    try {
+      const newUser = await UserRepository.createUser(userData);
+      return newUser;
+    } catch (error) {
+      throw new Error("Falha ao criar usuário");
     }
   }
 }

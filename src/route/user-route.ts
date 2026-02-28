@@ -11,6 +11,11 @@ const userRoutes = [
     method: "get",
     handler: userController.getUserById,
   },
+  {
+    path: "/create",
+    method: "post",
+    handler: userController.createUser,
+  },
 ];
 
 export default userRoutes;

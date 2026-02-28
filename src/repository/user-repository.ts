@@ -1,4 +1,4 @@
-import User from "../model/user-model";
+import User, { CreateUserAttributes } from "../model/user-model";
 
 class UserRepository {
   static async getUsers(): Promise<User[]> {
@@ -7,6 +7,10 @@ class UserRepository {
 
   static async getUserById(id: string): Promise<any | null> {
     return await User.findOne({ where: { id } });
+  }
+
+  static async createUser(userData: CreateUserAttributes): Promise<User | null> {
+    return await User.create({userData});
   }
 }
 

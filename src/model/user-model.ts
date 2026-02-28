@@ -1,6 +1,14 @@
 import { Table, Column, Model, DataType, HasMany } from "sequelize-typescript";
 import  Account  from "./account-model";
 
+
+export interface CreateUserAttributes {
+  name: string;
+  email: string;
+  password: string;
+}
+
+
 @Table({
   tableName: "users",
   timestamps: true,
@@ -35,3 +43,4 @@ export default class User extends Model {
   @HasMany(() => Account)
   accounts!: Account[];
 }
+
