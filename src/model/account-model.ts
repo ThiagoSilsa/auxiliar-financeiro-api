@@ -1,6 +1,15 @@
-import { BelongsTo, Column, DataType, ForeignKey, HasMany, Model, Table } from "sequelize-typescript";
-import  User  from "./user-model";
+import {
+  BelongsTo,
+  Column,
+  DataType,
+  ForeignKey,
+  HasMany,
+  Model,
+  Table,
+} from "sequelize-typescript";
+import User from "./user-model";
 import Transactions from "./transactions-model";
+import Cashbox from "./cashbox-model";
 
 @Table({
   tableName: "accounts",
@@ -51,4 +60,7 @@ export default class Accounts extends Model {
 
   @HasMany(() => Transactions)
   transactions!: Transactions[];
+
+  @HasMany(() => Cashbox)
+  cashboxes!: Cashbox[];
 }
