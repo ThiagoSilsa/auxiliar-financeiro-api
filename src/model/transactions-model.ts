@@ -22,9 +22,9 @@ export default class Transactions extends Model {
 
   @Column({
     type: DataType.STRING,
-    allowNull: false,
+    allowNull: true,
   })
-  description!: string;
+  description?: string;
 
   @Column({
     type: DataType.DECIMAL(15, 2),
