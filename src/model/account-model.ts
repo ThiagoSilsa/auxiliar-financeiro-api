@@ -1,11 +1,12 @@
-import { BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
+import { BelongsTo, Column, DataType, ForeignKey, HasMany, Model, Table } from "sequelize-typescript";
 import  User  from "./user-model";
+import Transactions from "./transactions-model";
 
 @Table({
-  tableName: "account",
+  tableName: "accounts",
   timestamps: true,
 })
-export default class Account extends Model {
+export default class Accounts extends Model {
   @Column({
     type: DataType.UUID,
     defaultValue: DataType.UUIDV4,
@@ -47,4 +48,7 @@ export default class Account extends Model {
 
   @BelongsTo(() => User)
   user!: User;
+
+  @HasMany(() => Transactions)
+  transactions!: Transactions[];
 }
