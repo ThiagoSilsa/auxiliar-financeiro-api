@@ -1,16 +1,14 @@
+import  express  from "express";
+
 import userController from "../controller/user-controller";
 
-const userRoutes = [
-  {
-    path: "/getAll",
-    method: "get",
-    handler: userController.getUsers,
-  },
-  {
-    path: "/:id",
-    method: "get",
-    handler: userController.getUserById,
-  },
-];
 
-export default userRoutes;
+
+const router = express.Router();
+
+
+router.get("/users", userController.getUsers);
+router.get("/users/:id", userController.getUserById);
+router.post("/users", userController.createUser);
+
+export default router;

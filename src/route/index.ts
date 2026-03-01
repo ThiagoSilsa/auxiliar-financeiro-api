@@ -1,10 +1,17 @@
 import userRoutes from "./user-route";
+import { Router } from "express";
 
-const indexRoute = [
-  ...userRoutes.map((route) => ({
-    ...route,
-    base: "/users",
-  })),
+const router = Router();
+
+// Indexa todas as rotas da aplicação
+const routes = [
+  {
+    router: userRoutes,
+  },
 ];
 
-export default indexRoute;
+routes.forEach((route) => {
+  router.use(route.router);
+});
+
+export default router;

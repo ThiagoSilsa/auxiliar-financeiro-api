@@ -1,17 +1,36 @@
-const data = [
-  { id: 1, name: "User A", email: "userA@example.com" },
-  { id: 2, name: "User B", email: "userB@example.com" },
-];
+import User, {
+  UserAttributes,
+  UserCreateAttributes,
+} from "../model/user-model";
 
-export class UserRepository {
-  public async getUsers(): Promise<any[]> {
-    return data;
+class UserRepository {
+  static async getUsers(): Promise<Omit<UserAttributes, "password" | "id">[]> {
+    return await User.findAll({
+      attributes: {
+        exclude: ["password", "id"],
+      },
+      order: [["createdAt", "DESC"]],
+      raw: true,
+    });
   }
 
-  public async getUserById(id: string): Promise<any | null> {
-    const user = data.find((user) => user.id === parseInt(id));
-    return user || null;
+  static async getUserById(
+    id: string,
+  ): Promise<Omit<UserAttributes, "password" | "id"> | null> {
+    return await User.findOne({
+      where: { id },
+      attributes: { exclude: ["password", "id"] },
+      raw: true,
+    });
+  }
+
+  static async createUser(
+    userData: UserCreateAttributes,
+  ): Promise<Omit<UserAttributes, "password" | "id"> | null> {
+    const userCreation = await User.create({ ...userData });
+    // Retorna o usuário criado sem a senha e o ID
+    return this.getUserById(userCreation.id);
   }
 }
 
-export default new UserRepository();
+export default UserRepository;
