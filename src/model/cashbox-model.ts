@@ -9,7 +9,7 @@ import {
 import Accounts from "./account-model";
 
 @Table({
-  tableName: "Cashbox",
+  tableName: "cashbox",
   timestamps: true,
 })
 export default class Cashbox extends Model {
@@ -76,5 +76,4 @@ export default class Cashbox extends Model {
 
   @BelongsTo(() => Accounts)
   account!: Accounts;
-
 }
