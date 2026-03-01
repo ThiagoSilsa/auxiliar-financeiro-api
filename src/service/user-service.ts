@@ -1,11 +1,8 @@
-import User, {
-  UserAttributes,
-  UserCreateAttributes,
-} from "../model/user-model";
+import { UserAttributes, UserCreateAttributes } from "../model/user-model";
 import UserRepository from "../repository/user-repository";
 
 class UserService {
-  static async getUsers(): Promise<UserAttributes[]> {
+  static async getUsers(): Promise<Omit<UserAttributes, "password" | "id">[]> {
     try {
       const users = await UserRepository.getUsers();
       return users;
@@ -14,7 +11,9 @@ class UserService {
     }
   }
 
-  static async getUserById(id: string): Promise<UserAttributes | null> {
+  static async getUserById(
+    id: string,
+  ): Promise<Omit<UserAttributes, "password" | "id"> | null> {
     try {
       const user = await UserRepository.getUserById(id);
       return user;
@@ -25,12 +24,11 @@ class UserService {
 
   static async createUser(
     userData: UserCreateAttributes,
-  ): Promise<UserAttributes | null> {
+  ): Promise<Omit<UserAttributes, "password" | "id"> | null> {
     try {
       const newUser = await UserRepository.createUser(userData);
       return newUser;
     } catch (error) {
-      console.error("Erro ao criar usuário:", error);
       throw new Error("Falha ao criar usuário" + error);
     }
   }
