@@ -7,7 +7,7 @@ import UserService from "../service/user-service";
 class UserController {
   async getUsers(req: Request, res: Response) {
     try {
-      const users = UserService.getUsers();
+      const users = await UserService.getUsers();
       res.status(200).json(users);
     } catch (error) {
       res.status(500).json({ error: "Falha ao buscar usuários" });
@@ -18,7 +18,7 @@ class UserController {
     const { id } = req.params;
     const stringId = String(id);
     try {
-      const user = UserService.getUserById(stringId);
+      const user = await UserService.getUserById(stringId);
       if (user) {
         res.status(200).json(user);
       } else {
