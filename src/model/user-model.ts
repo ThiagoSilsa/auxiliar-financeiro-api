@@ -2,12 +2,17 @@ import { Table, Column, Model, DataType, HasMany } from "sequelize-typescript";
 import  Account  from "./account-model";
 
 
-export interface CreateUserAttributes {
+export interface UserCreateAttributes {
   name: string;
   email: string;
   password: string;
 }
 
+export interface UserAttributes extends UserCreateAttributes {
+  id: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
 
 @Table({
   tableName: "users",
