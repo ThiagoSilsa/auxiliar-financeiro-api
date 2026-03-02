@@ -1,6 +1,7 @@
 import { Sequelize } from "sequelize-typescript";
 import env from "./env";
 
+import IndexModels from "../model/index-models";
 async function setupDatabase() {
   // 1. Cria banco de dados se não existir
   const sequelize = new Sequelize({
@@ -30,7 +31,7 @@ async function setupDatabase() {
     host: env.DB_HOST || "localhost",
     port: Number(env.DB_PORT) || 3306,
     logging: false,
-    models: [__dirname + "/../model"],
+    models: IndexModels,
     timezone: "-03:00",
   });
   await sequelizeConnected.sync();
