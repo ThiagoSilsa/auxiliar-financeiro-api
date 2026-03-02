@@ -33,6 +33,19 @@ class UserController {
 
   async createUser(req: Request, res: Response) {
     const { name, email, password } = req.body;
+    // Validação básica do payload
+    if (
+      typeof name !== "string" ||
+      typeof email !== "string" ||
+      typeof password !== "string" ||
+      !name.trim() ||
+      !email.trim() ||
+      !password.trim()
+    ) {
+      return res.status(400).json({
+        error: "Payload inválido: name, email e password são obrigatórios.",
+      });
+    }
     try {
       const newUser = await UserService.createUser({ name, email, password });
       res.status(201).json(newUser);

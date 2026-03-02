@@ -24,7 +24,7 @@ class UserService {
 
   static async createUser(
     userData: UserCreateAttributes,
-  ): Promise<Omit<UserAttributes, "password" | "id"> | null> {
+  ): Promise<Omit<UserAttributes, "password"> | null> {
     try {
       const newUser = await UserRepository.createUser(userData);
       return newUser;

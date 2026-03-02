@@ -26,10 +26,11 @@ class UserRepository {
 
   static async createUser(
     userData: UserCreateAttributes,
-  ): Promise<Omit<UserAttributes, "password" | "id"> | null> {
+  ): Promise<Omit<UserAttributes, "password"> | null> {
     const userCreation = await User.create({ ...userData });
-    // Retorna o usuário criado sem a senha e o ID
-    return this.getUserById(userCreation.id);
+    // Exclui a senha do objeto retornado
+    const { password, ...userCreated } = userCreation.get({ plain: true });
+    return userCreated;
   }
 }
 
