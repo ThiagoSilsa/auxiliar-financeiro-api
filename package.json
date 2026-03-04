@@ -4,7 +4,7 @@
   "description": "API do aplicativo de assistente financeiro",
   "main": "dist/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest run --dir ./src",
     "dev": "tsc --watch & nodemon ./dist/server.js",
     "build": "tsc",
     "start": "node dist/server.js"
@@ -27,6 +27,7 @@
     "@types/express": "^5.0.6",
     "@types/morgan": "^1.9.10",
     "@types/node": "^25.3.0",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "vitest": "^4.0.18"
   }
 }
